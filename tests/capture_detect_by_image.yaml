@@ -1,0 +1,24 @@
+config:
+  target: "https://app-api-dev.gemcommerce.xyz/gem-ai/layout"
+  http:
+    timeout: 300
+  phases:
+    - duration: 120
+      arrivalRate: 1
+      maxVusers: 1
+      name: "3 user at 5 req/s"
+  processor: "../processor.js"
+
+scenarios:
+  - name: "Image to layout response time"
+    flow:
+      - post:
+          beforeRequest: beforeRequestHandler
+          url: "/capture/detect"
+          body:
+            json:
+              url: 'https://google.com'
+
+
+
+
